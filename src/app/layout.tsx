@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Gabarito } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { UserProvider } from "@/contexts/UserContext";
+import { NavbarProvider } from "@/contexts/NavbarContext";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
@@ -8,16 +10,9 @@ export const metadata: Metadata = {
   description: "Generated to impress you",
 };
 
-const geist = Geist({
+const gabarito = Gabarito({
+  variable: "--font-gabarito",
   subsets: ["latin"],
-  variable: "--font-geist-sans",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
 });
 
 export default function RootLayout({
@@ -30,7 +25,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-          className={`${geist.variable} ${geistMono.variable} bg-background text-foreground antialiased transition-colors duration-300`}
+          className={`${gabarito.variable} overflow-x-hidden bg-background text-foreground antialiased transition-all duration-300`}
         >
           <ThemeProvider
             attribute="class"
@@ -38,8 +33,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            {children}
+            <UserProvider>
+              <NavbarProvider>
+                <Navbar />
+                {children}
+              </NavbarProvider>
+            </UserProvider>
           </ThemeProvider>
         </body>
       </html>
