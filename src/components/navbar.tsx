@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Menu, X, Moon, Sun } from "lucide-react";
+import { useNavbar } from "@/hooks/useNavbar";
 import { useAsset } from "@/hooks/useAsset";
 
 export function Navbar() {
@@ -13,6 +14,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const { isNavbarVisible } = useNavbar();
 
   useEffect(() => {
     setMounted(true);
@@ -31,11 +33,17 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 z-50 backdrop-blur-md border-[0.1px] border-gray-200 dark:border-gray-800 transition-all duration-300 ease-out ${
-        mobileMenuOpen
-          ? "h-screen bg-background rounded-none"
-          : "rounded-2xl bottom-2 left-1/2 -translate-x-1/2 backdrop-filter bg-opacity-0 max-w-[98vw] shadow-sm hover:shadow-md"
-      }`}
+      className={`fixed inset-x-0 z-50 backdrop-blur-md border-[0.1px] border-gray-200 dark:border-gray-800 transition-all duration-300 ease-out 
+        ${
+          mobileMenuOpen
+            ? "h-screen bg-background rounded-none"
+            : "rounded-2xl bottom-2 left-1/2 -translate-x-1/2 backdrop-filter bg-opacity-0 max-w-[98vw] shadow-sm hover:shadow-md"
+        } 
+        ${
+          isNavbarVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-[-100%] opacity-0"
+        }`}
     >
       <div className="container mx-auto px-4 py-5">
         <div className="flex justify-between items-center">
