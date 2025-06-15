@@ -14,9 +14,9 @@ export const ContactSection = () => {
           {user &&
             user.contacts &&
             user?.contacts.map((media) => (
-              <li key={media.name}>
-                <a href={media.url}>
-                  <img src={media.logo} alt={media.name} />
+              <li key={media.label}>
+                <a href={media.href}>
+                  <img src={media.icon} alt={media.label} />
                 </a>
               </li>
             ))}
