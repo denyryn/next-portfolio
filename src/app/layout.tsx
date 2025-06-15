@@ -23,7 +23,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-          className={`${gabarito.variable} overflow-x-hidden bg-background text-foreground antialiased transition-all duration-300 font-(family-name:--font-gabarito)`}
+          className={`${gabarito.variable} overflow-x-hidden max-w-screen bg-background text-foreground antialiased transition-all duration-300 font-(family-name:--font-gabarito)`}
         >
           <AppProviders>
             <Navbar />
