@@ -23,6 +23,14 @@
       "@/public/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "types": ["three", "@react-three/fiber", "@types/leva"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/lanyard.ts",
+    "next.config.ts"
+  ],
   "exclude": ["node_modules"]
 }
