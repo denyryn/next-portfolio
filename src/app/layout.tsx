@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Gabarito } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import { UserProvider } from "@/contexts/UserContext";
-import { NavbarProvider } from "@/contexts/NavbarContext";
 import { Navbar } from "@/components/navbar";
+import { AppProviders } from "./providers";
 
 export const metadata: Metadata = {
   title: "Deny's Portfolio",
@@ -25,21 +23,12 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-          className={`${gabarito.variable} overflow-x-hidden bg-background text-foreground antialiased transition-all duration-300`}
+          className={`${gabarito.variable} overflow-x-hidden bg-background text-foreground antialiased transition-all duration-300 font-(family-name:--font-gabarito)`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <UserProvider>
-              <NavbarProvider>
-                <Navbar />
-                {children}
-              </NavbarProvider>
-            </UserProvider>
-          </ThemeProvider>
+          <AppProviders>
+            <Navbar />
+            {children}
+          </AppProviders>
         </body>
       </html>
     </>
