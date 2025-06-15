@@ -112,7 +112,10 @@ const ProjectsContent = () => {
   if (!projects) return null;
 
   return (
-    <section className="relative min-h-screen " ref={containerRef}>
+    <section
+      className="relative min-h-screen overflow-x-hidden"
+      ref={containerRef}
+    >
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-grid-small-black/[0.02] bg-grid-pattern" />
 
