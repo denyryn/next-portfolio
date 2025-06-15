@@ -48,13 +48,13 @@ export const ProjectCard = ({
         {/* Content Section */}
         <div className="project-content p-6 space-y-4">
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold text-white group-hover:text-white/90 transition-colors duration-300">
+            <h3 className="text-2xl font-bold text-foreground group-hover:text-foreground/90 transition-colors duration-300">
               {project.name}
             </h3>
             <div className="h-0.5 w-0 bg-white group-hover:w-12 transition-all duration-500 ease-out" />
           </div>
 
-          <p className="text-white/80 leading-relaxed line-clamp-3">
+          <p className="text-foreground/80 leading-relaxed line-clamp-3">
             {project.description}
           </p>
 
@@ -64,7 +64,7 @@ export const ProjectCard = ({
               <Badge
                 key={techIndex}
                 variant="secondary"
-                className="text-xs bg-white/10 select-none hover:bg-white/20 text-white/80 hover:text-white border-white/10 hover:border-white/20 transition-all duration-300"
+                className="text-xs bg-white/10 select-none hover:bg-white/20 text-foreground/80 hover:text-foreground border-white/10 hover:border-white/20 transition-all duration-300"
               >
                 {tech}
               </Badge>
@@ -77,10 +77,10 @@ export const ProjectCard = ({
               className={`w-2 h-2 rounded-full ${
                 hoveredProject === project.id
                   ? "bg-green-400 animate-pulse"
-                  : "bg-white/40"
+                  : "bg-gray-700"
               } transition-all duration-300`}
             />
-            <span className="text-xs text-white/70 uppercase tracking-wider font-medium">
+            <span className="text-xs text-foreground uppercase tracking-wider font-medium">
               {hoveredProject === project.id ? "Active" : "View Project"}
             </span>
           </div>
