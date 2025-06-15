@@ -112,10 +112,7 @@ const ProjectsContent = () => {
   if (!projects) return null;
 
   return (
-    <section
-      className="relative min-h-screen bg-gradient-to-br from-background via-background to-muted/20"
-      ref={containerRef}
-    >
+    <section className="relative min-h-screen " ref={containerRef}>
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-grid-small-black/[0.02] bg-grid-pattern" />
 
@@ -126,7 +123,7 @@ const ProjectsContent = () => {
       >
         {/* Title */}
         <div className="min-w-screen flex items-center justify-center p-3">
-          <div className="flex flex-wrap justify-start max-w-sm lg:max-w-screen">
+          <div className="flex flex-wrap max-w-xs lg:max-w-screen">
             <AnimatedText
               text="Projects "
               className="flex text-[5rem] md:text-[7rem] font-bold text-foreground"
@@ -143,16 +140,18 @@ const ProjectsContent = () => {
         </div>
 
         {/* Project cards */}
-        {projects.map((project, index) => (
-          <li
-            key={project.id}
-            className="flex-shrink-0"
-            onMouseEnter={() => setHoveredProject(project.id)}
-            onMouseLeave={() => setHoveredProject(null)}
-          >
-            <ProjectCard project={project} hoveredProject={hoveredProject} />
-          </li>
-        ))}
+        <div className="flex items-center justify-end gap-4 min-w-fit px-36">
+          {projects.map((project, index) => (
+            <li
+              key={index}
+              className="flex-shrink-0"
+              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseLeave={() => setHoveredProject(null)}
+            >
+              <ProjectCard project={project} hoveredProject={hoveredProject} />
+            </li>
+          ))}
+        </div>
       </ul>
 
       {/* Scroll indicator */}
