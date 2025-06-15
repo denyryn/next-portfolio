@@ -3,4 +3,6 @@ export const staticUserData = {
   name: "Deny Rianto",
   email: "denyryn@outlook.com",
   role: "Fullstack Developer",
+  portrait:
+    "https://res.cloudinary.com/dunxaky7i/image/upload/v1748936076/1748936013012_fizzw6.jpg",
 };
