@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,23 +11,20 @@ interface AnimatedTextProps {
 
 export const AnimatedText: React.FC<AnimatedTextProps> = ({
   text,
-  className,
+  className = "",
 }) => {
-  const lettersRef = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lettersRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (lettersRef.current.length !== text.length) return;
 
-    const animatableLetters = lettersRef.current.filter(
-      Boolean
-    ) as HTMLDivElement[];
-
     gsap.registerPlugin(ScrollTrigger);
+    const letters = lettersRef.current;
 
-    gsap.set(animatableLetters, { opacity: 0, y: 1000 });
+    gsap.set(letters, { opacity: 0, y: 1000 });
 
-    const animation = gsap.to(animatableLetters, {
+    const animation = gsap.to(letters, {
       opacity: 1,
       y: 0,
       duration: 1,
@@ -45,17 +42,12 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   }, [text]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`text-center relative *:relative *:inline-block *:font-bold ${
-        className ?? ""
-      }`}
-    >
+    <div ref={containerRef} className={`flex justify-center ${className}`}>
       {[...text].map((letter, i) => (
         <div
           key={`${letter}-${i}-${text.length}`}
           ref={(el) => {
-            lettersRef.current[i] = el;
+            if (el) lettersRef.current[i] = el;
           }}
         >
           {letter === " " ? "\u00A0" : letter}
