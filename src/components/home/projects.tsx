@@ -19,7 +19,7 @@ const ProjectsContent = () => {
   const listRef = useRef<HTMLUListElement>(null);
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!projects || !listRef.current || !containerRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -113,7 +113,7 @@ const ProjectsContent = () => {
 
   return (
     <section
-      className="relative min-h-screen overflow-x-hidden"
+      className="relative min-h-screen overflow-hidden"
       ref={containerRef}
     >
       {/* Background grid pattern */}
